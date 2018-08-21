@@ -54,7 +54,7 @@ class CalcEngine
   end
 
   def square_root(num)
-    sqrt(num)
+    Math.sqrt(num)
   end
 
   def power_of(base, exponent)
@@ -63,9 +63,9 @@ class CalcEngine
 
   def bmi_aritmetic(measure, weight, height)
     if measure == "imp"
-      703 * (weight / (height ** 2)
+      703 * (weight / (height ** 2))
     elsif measure == "met"
-      weight / (height ** 2));
+      weight / (height ** 2);
     end
   end
 
