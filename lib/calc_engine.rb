@@ -34,18 +34,21 @@ class CalcEngine
       exit
     end
   end
+  
   # Gets user input for num 1
   def get_num1
     # Ask for first number
     puts "First number: "
     num1 = gets.chomp
   end
+
   # Gets user input for num 2
   def get_num2
     # Ask for second number
     puts "Second number: "
     num2 = gets.chomp
   end
+
   # Basic calculator method
   def basic_calc
     # Numbers to use
@@ -90,6 +93,7 @@ class CalcEngine
       puts "Answer: #{result}"
     end
   end
+
   # Advanced calculator method
   def advanced_calc
     # Numbers to use
@@ -126,6 +130,7 @@ class CalcEngine
       puts "Answer: #{result}"
     end
   end
+
   # BMI calculator method
   def bmi_calc
     height = 0.0
@@ -155,6 +160,7 @@ class CalcEngine
     result = bmi_aritmetic(measurement, weight.to_f, height.to_f)
     puts "BMI: #{result.round(2)}"
   end
+
   # Trip calculator method
   def trip_calc
     dist = 0.0
@@ -246,14 +252,7 @@ class CalcEngine
   end
 end
 
-def main
-  begin
-    calc = CalcEngine.new()
-    calc.menu
-    reuse = use_again?
-  end while reuse == true
-end
-
+# Ask the user if they would like to use the calculator again
 def use_again?
   user_choice = ""
 
@@ -267,4 +266,14 @@ def use_again?
   end
 end
 
+# Method for running the main code
+def main
+  begin
+    calc = CalcEngine.new()
+    calc.menu
+    reuse = use_again?
+  end while reuse == true
+end
+
+# Call the main method
 main
