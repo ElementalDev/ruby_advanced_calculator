@@ -30,6 +30,8 @@ class CalcEngine
       bmi_calc
     when "tri"
       trip_calc
+    when "q"
+      exit
     end
   end
   # Gets user input for num 1
