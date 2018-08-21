@@ -33,16 +33,26 @@ describe "Testing the calc engine" do
   end
   # TEST FOR SQUARE ROOT
   it "should be able to square root any number" do
-    expect(@calc.square_root(81)).to eq(9)
-    expect(@calc.square_root(2.5)).to eq(1.5811388300841898)
+    expect(@calc.sq_root(81)).to eq(9)
+    expect(@calc.sq_root(2.5)).to eq(1.5811388300841898)
   end
   # TEST FOR BASE AND EXPONENT
   it "should times a base number by its exponent" do
     expect(@calc.power_of(5, 2)).to eq(25)
     expect(@calc.power_of(9, 2)).to eq(81)
   end
+  # TEST FOR BMI CALCULATION
   it "should calculate bmi based on imperial or metric measurments" do
     expect(@calc.bmi_aritmetic("imp", 150, 69.7)).to eq(21.706061435667102)
     expect(@calc.bmi_aritmetic("met", 90, 1.73)).to eq(30.071168431955627)
+  end
+  # TEST FOR TRIP TIME
+  it "should calculate the time of a trip based on speed and distance" do
+    expect(@calc.trip_time(60, 60)).to eq(1)
+    expect(@calc.trip_time(120, 60)).to eq(2)
+  end
+  # TEST FOR TRIP TIME
+  it "should calculate the cost of a trip based on distance, efficiency and cost per gallon" do
+    expect(@calc.trip_cost(2, 1, 2, 50)).to eq(4)
   end
 end
