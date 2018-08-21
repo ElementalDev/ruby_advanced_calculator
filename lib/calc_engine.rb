@@ -20,6 +20,7 @@ class CalcEngine
     when "bas"
       basic_calc
     when "adv"
+      advanced_calc
     when "bod"
     when "tri"
     end
@@ -79,7 +80,40 @@ class CalcEngine
       # Prints result
       puts "Answer: #{result}"
     end
+  end
 
+  def advanced_calc
+    # Numbers to use
+    num1 = 0.0
+    num2 = 0.0
+    # Result of the function
+    result = 0.0
+    # Operation they wish to use
+    operation = ""
+
+    puts "What would you like to do? (pow|sqrt)"
+    operation = gets.chomp
+    operation = operation[0..2]
+    operation = operation.downcase
+
+    case operation
+    when "pow"
+      puts "Base: "
+      num1 = gets.chomp
+      puts "Exponent: "
+      num2 = gets.chomp
+      # Calls the relevant helper method
+      result = power_of(num1.to_f, num2.to_f)
+      # Prints result
+      puts "Answer: #{result}"
+    when "sqr"
+      puts "Number: "
+      num1 = gets.chomp
+      # Calls the relevant helper method
+      result = sq_root(num1.to_i)
+      # Prints result
+      puts "Answer: #{result}"
+    end
   end
 
   # HELPER METHODS
