@@ -1,9 +1,11 @@
 class CalcEngine
-  # MENU
-  def run_calculator
+  # MAIN METHODS
+  # Calc menu
+  def menu
     user_choice = ""
     number1 = 0
     number2 = 0
+
     # Basic menu
     puts "---------------------------------------"
     puts "Which calculator would you like to use?"
@@ -11,11 +13,14 @@ class CalcEngine
     puts "(Adv)anced"
     puts "(Bod)y mass index"
     puts "(Tri)p"
+    puts "(Q)uit"
     puts "---------------------------------------"
+    # Gets user input
     user_choice = gets.chomp
     user_choice = user_choice[0..2]
     user_choice = user_choice.downcase
 
+    # Evaluates the user decision
     case user_choice
     when "bas"
       basic_calc
@@ -24,21 +29,22 @@ class CalcEngine
     when "bod"
       bmi_calc
     when "tri"
+      trip_calc
     end
   end
-
+  # Gets user input for num 1
   def get_num1
     # Ask for first number
     puts "First number: "
     num1 = gets.chomp
   end
-
+  # Gets user input for num 2
   def get_num2
     # Ask for second number
     puts "Second number: "
     num2 = gets.chomp
   end
-
+  # Basic calculator method
   def basic_calc
     # Numbers to use
     num1 = 0.0
@@ -82,7 +88,7 @@ class CalcEngine
       puts "Answer: #{result}"
     end
   end
-
+  # Advanced calculator method
   def advanced_calc
     # Numbers to use
     num1 = 0.0
@@ -98,6 +104,7 @@ class CalcEngine
     operation = operation.downcase
 
     case operation
+    # Base and Exponent operation
     when "pow"
       puts "Base: "
       num1 = gets.chomp
@@ -107,6 +114,7 @@ class CalcEngine
       result = power_of(num1.to_f, num2.to_f)
       # Prints result
       puts "Answer: #{result}"
+    # Square root operation
     when "sqr"
       puts "Number: "
       num1 = gets.chomp
@@ -116,18 +124,20 @@ class CalcEngine
       puts "Answer: #{result}"
     end
   end
-
+  # BMI calculator method
   def bmi_calc
     height = 0.0
     weight = 0.0
     result = 0.0
     measurement = ""
 
+    # Ask what measurement system they would like
     puts "Which measurement system would you like to use? (imp | met)"
     measurement = gets.chomp
     measurement = measurement[0..2]
     measurement = measurement.downcase
 
+    # Ask for different units for different measurements
     if measurement == "imp"
       puts "Please enter your height in inches: "
       height = gets.chomp
@@ -139,8 +149,35 @@ class CalcEngine
       puts "Please enter your weight in kilograms: "
       weight = gets.chomp
     end
+    # Store and display the result
     result = bmi_aritmetic(measurement, weight.to_f, height.to_f)
     puts "BMI: #{result.round(2)}"
+  end
+  # Trip calculator method
+  def trip_calc
+    dist = 0.0
+    eff = 0.0
+    cpg = 0.0
+    mph = 0
+    time_result = 0
+    cost_result = 0.0
+
+    # Asks user for input
+    puts "How far are you going in miles?: "
+    dist = gets.chomp
+    puts "How efficient is your vehicle in miles per gallon?: "
+    eff = gets.chomp
+    puts "How much does it cost per gallon of fuel?: "
+    cpg = gets.chomp
+    puts "What is the average speed you will be going in miles per hour?: "
+    mph = gets.chomp
+
+    # Calls helper functions to calculate the input
+    time_result = trip_time(dist.to_i, mph.to_i)
+    cost_result = trip_cost(dist.to_i, eff.to_f, cpg.to_f, mph.to_i)
+
+    # Output the result
+    puts "It will take you approx. #{time_result.ceil} hours and will cost #{cost_result.round(2)}"
   end
 
   # HELPER METHODS
@@ -210,7 +247,7 @@ end
 def main
   begin
     calc = CalcEngine.new()
-    calc.run_calculator
+    calc.menu
     reuse = use_again?
   end while reuse == true
 end
