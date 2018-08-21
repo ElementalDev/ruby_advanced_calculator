@@ -25,6 +25,12 @@ class CalcEngine
     end
   end
 
+  def basic_calc
+    num1 = 0.0
+    num2 = 0.0
+
+
+  end
 
   # HELPER METHODS
   # Adds 2 numbers
@@ -46,7 +52,24 @@ class CalcEngine
   def divide_two_numbers(num1, num2)
     num1 / num2
   end
+
+  def square_root(num)
+  end
+
+  def power_of(base, exponent)
+    base ** exponent
+  end
+
+  def bmi_aritmetic(measure, weight, height)
+    if measure == "imp"
+
+    elsif measure == "met"
+    end
+  end
+
+  def trip_arithmetic(dist, eff, cpg, mph)
+  end
 end
 
-calc = CalcEngine.new()
-calc.run_calculator
+# calc = CalcEngine.new()
+# calc.run_calculator
