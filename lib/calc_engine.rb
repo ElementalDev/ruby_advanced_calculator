@@ -15,10 +15,10 @@ class CalcEngine
     user_choice = gets.chomp
     user_choice = user_choice[0..2]
     user_choice = user_choice.downcase
-    puts user_choice
 
     case user_choice
     when "bas"
+      basic_calc
     when "adv"
     when "bod"
     when "tri"
@@ -26,8 +26,64 @@ class CalcEngine
   end
 
   def basic_calc
+    # Numbers to use
     num1 = 0.0
     num2 = 0.0
+    # Result of the function
+    result = 0.0
+    # Operation they wish to use
+    operation = ""
+
+    puts "What would you like to do? (+|-|*|/)"
+    operation = gets.chomp
+
+    case operation
+    when "+"
+      # Ask for first number
+      puts "First number"
+      num1 = gets.chomp
+      # Ask for second number
+      puts "Second number"
+      num2 = gets.chomp
+      # Calls the relevant helper method
+      result = add_two_numbers(num1.to_f, num2.to_f)
+      # Prints result
+      puts "Answer: #{result}"
+    when "-"
+      # Ask for first number
+      puts "First number"
+      num1 = gets.chomp
+      # Ask for second number
+      puts "Second number"
+      num2 = gets.chomp
+      # Calls the relevant helper method
+      result = subtract_two_numbers(num1.to_f, num2.to_f)
+      # Prints result
+      puts "Answer: #{result}"
+    when "*"
+      # Ask for first number
+      puts "First number"
+      num1 = gets.chomp
+      # Ask for second number
+      puts "Second number"
+      num2 = gets.chomp
+      # Calls the relevant helper method
+      result = multiply_two_numbers(num1.to_f, num2.to_f)
+      # Prints result
+      puts "Answer: #{result}"
+    when "/"
+      # Ask for first number
+      puts "First number"
+      num1 = gets.chomp
+      # Ask for second number
+      puts "Second number"
+      num2 = gets.chomp
+      # Calls the relevant helper method
+      result = divide_two_numbers(num1.to_f, num2.to_f)
+      # Prints result
+      puts "Answer: #{result}"
+    end
+
   end
 
   # HELPER METHODS
@@ -95,5 +151,9 @@ class CalcEngine
   end
 end
 
-# calc = CalcEngine.new()
-# calc.run_calculator
+def main
+  calc = CalcEngine.new()
+  done = false
+  
+  calc.run_calculator
+end
