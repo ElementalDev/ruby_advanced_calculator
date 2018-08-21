@@ -22,6 +22,7 @@ class CalcEngine
     when "adv"
       advanced_calc
     when "bod"
+      bmi_calc
     when "tri"
     end
   end
@@ -116,6 +117,32 @@ class CalcEngine
     end
   end
 
+  def bmi_calc
+    height = 0.0
+    weight = 0.0
+    result = 0.0
+    measurement = ""
+
+    puts "Which measurement system would you like to use? (imp | met)"
+    measurement = gets.chomp
+    measurement = measurement[0..2]
+    measurement = measurement.downcase
+
+    if measurement == "imp"
+      puts "Please enter your height in inches: "
+      height = gets.chomp
+      puts "Please enter your weight in pounds: "
+      weight = gets.chomp
+    elsif measurement == "met"
+      puts "Please enter your height in meters: "
+      height = gets.chomp
+      puts "Please enter your weight in kilograms: "
+      weight = gets.chomp
+    end
+    result = bmi_aritmetic(measurement, weight.to_f, height.to_f)
+    puts "BMI: #{result}"
+  end
+
   # HELPER METHODS
   # Adds 2 numbers
   def add_two_numbers(num1, num2)
@@ -149,11 +176,10 @@ class CalcEngine
 
   # Works out bmi, allowing user to decide what measurement system they want to use
   def bmi_aritmetic(measure, weight, height)
-    result = 0.0
     if measure == "imp"
-      result = 703 * (weight / (height ** 2))
+      703 * (weight / (height ** 2))
     elsif measure == "met"
-      result = weight / (height ** 2);
+      weight / (height ** 2);
     end
   end
 
