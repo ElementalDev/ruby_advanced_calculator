@@ -36,10 +36,13 @@ describe "Testing the calc engine" do
     expect(@calc.square_root(81)).to eq(9)
     expect(@calc.square_root(2.5)).to eq(1.5811388300841898)
   end
-  # TEST FOR DIVISION
+  # TEST FOR BASE AND EXPONENT
   it "should times a base number by its exponent" do
-    expect(@calc.divide_two_numbers(50, 5)).to eq(10)
-    expect(@calc.divide_two_numbers(5.5, 0.5)).to eq(11)
-    expect(@calc.divide_two_numbers(-6, -3)).to eq(2)
+    expect(@calc.power_of(5, 2)).to eq(25)
+    expect(@calc.power_of(9, 2)).to eq(81)
+  end
+  it "should calculate bmi based on imperial or metric measurments" do
+    expect(@calc.bmi_aritmetic("imp", 150, 69.7)).to eq(21.706061435667102)
+    expect(@calc.bmi_aritmetic("met", 90, 1.73)).to eq(30.071168431955627)
   end
 end

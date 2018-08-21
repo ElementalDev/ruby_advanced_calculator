@@ -62,14 +62,16 @@ class CalcEngine
   end
 
   def bmi_aritmetic(measure, weight, height)
+    result = 0.0
     if measure == "imp"
-      703 * (weight / (height ** 2))
+      result = 703 * (weight / (height ** 2))
     elsif measure == "met"
-      weight / (height ** 2);
+      result = weight / (height ** 2);
     end
   end
 
   def trip_time(dist, mph)
+    dist / mph;
   end
 
   def trip_cost(dist, eff, cpg, mph)
