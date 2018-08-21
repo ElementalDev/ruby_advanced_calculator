@@ -22,6 +22,21 @@ class CalcEngine
     num1 + num2
   end
   
+  # Subtract 2 numbers
+  def subtract_two_numbers(num1, num2)
+    num1 - num2
+  end
+
+  # Multiply 2 numbers
+  def multiply_two_numbers(num1, num2)
+    num1 * num2
+  end
+
+  # Divides 2 numbers
+  def divide_two_numbers(num1, num2)
+    num1 / num2
+  end
+
 end
 
 calc = CalcEngine.new()
