@@ -140,7 +140,7 @@ class CalcEngine
       weight = gets.chomp
     end
     result = bmi_aritmetic(measurement, weight.to_f, height.to_f)
-    puts "BMI: #{result}"
+    puts "BMI: #{result.round(2)}"
   end
 
   # HELPER METHODS
