@@ -25,6 +25,18 @@ class CalcEngine
     end
   end
 
+  def get_num1
+    # Ask for first number
+    puts "First number: "
+    num1 = gets.chomp
+  end
+
+  def get_num2
+    # Ask for second number
+    puts "Second number: "
+    num2 = gets.chomp
+  end
+
   def basic_calc
     # Numbers to use
     num1 = 0.0
@@ -39,45 +51,29 @@ class CalcEngine
 
     case operation
     when "+"
-      # Ask for first number
-      puts "First number"
-      num1 = gets.chomp
-      # Ask for second number
-      puts "Second number"
-      num2 = gets.chomp
+      num1 = get_num1
+      num2 = get_num2
       # Calls the relevant helper method
       result = add_two_numbers(num1.to_f, num2.to_f)
       # Prints result
       puts "Answer: #{result}"
     when "-"
-      # Ask for first number
-      puts "First number"
-      num1 = gets.chomp
-      # Ask for second number
-      puts "Second number"
-      num2 = gets.chomp
+      num1 = get_num1
+      num2 = get_num2
       # Calls the relevant helper method
       result = subtract_two_numbers(num1.to_f, num2.to_f)
       # Prints result
       puts "Answer: #{result}"
     when "*"
-      # Ask for first number
-      puts "First number"
-      num1 = gets.chomp
-      # Ask for second number
-      puts "Second number"
-      num2 = gets.chomp
+      num1 = get_num1
+      num2 = get_num2
       # Calls the relevant helper method
       result = multiply_two_numbers(num1.to_f, num2.to_f)
       # Prints result
       puts "Answer: #{result}"
     when "/"
-      # Ask for first number
-      puts "First number"
-      num1 = gets.chomp
-      # Ask for second number
-      puts "Second number"
-      num2 = gets.chomp
+      num1 = get_num1
+      num2 = get_num2
       # Calls the relevant helper method
       result = divide_two_numbers(num1.to_f, num2.to_f)
       # Prints result
@@ -152,8 +148,24 @@ class CalcEngine
 end
 
 def main
-  calc = CalcEngine.new()
-  done = false
-  
-  calc.run_calculator
+  begin
+    calc = CalcEngine.new()
+    calc.run_calculator
+    reuse = use_again?
+  end while reuse == true
 end
+
+def use_again?
+  user_choice = ""
+
+  puts "Would you like to use the calculator again? (y/n)"
+  user_choice = gets.chomp
+
+  if user_choice == "y"
+    true
+  else
+    false
+  end
+end
+
+main
