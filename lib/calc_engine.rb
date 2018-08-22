@@ -5,7 +5,6 @@ class CalcEngine
     user_choice = ""
     number1 = 0
     number2 = 0
-
     # Basic menu
     puts "---------------------------------------"
     puts "Which calculator would you like to use?"
@@ -19,7 +18,6 @@ class CalcEngine
     user_choice = gets.chomp
     user_choice = user_choice[0..2]
     user_choice = user_choice.downcase
-
     # Evaluates the user decision
     case user_choice
     when "bas"
@@ -34,7 +32,7 @@ class CalcEngine
       exit
     end
   end
-  
+
   # Gets user input for num 1
   def get_num1
     # Ask for first number
@@ -58,10 +56,9 @@ class CalcEngine
     result = 0.0
     # Operation they wish to use
     operation = ""
-
     puts "What would you like to do? (+|-|*|/)"
     operation = gets.chomp
-
+    # Evaluate user operation choice
     case operation
     when "+"
       num1 = get_num1
@@ -103,12 +100,11 @@ class CalcEngine
     result = 0.0
     # Operation they wish to use
     operation = ""
-
     puts "What would you like to do? (pow|sqrt)"
     operation = gets.chomp
     operation = operation[0..2]
     operation = operation.downcase
-
+    # Evaluate user operation choice
     case operation
     # Base and Exponent operation
     when "pow"
@@ -137,13 +133,11 @@ class CalcEngine
     weight = 0.0
     result = 0.0
     measurement = ""
-
     # Ask what measurement system they would like
     puts "Which measurement system would you like to use? (imp | met)"
     measurement = gets.chomp
     measurement = measurement[0..2]
     measurement = measurement.downcase
-
     # Ask for different units for different measurements
     if measurement == "imp"
       puts "Please enter your height in inches: "
@@ -169,7 +163,6 @@ class CalcEngine
     mph = 0
     time_result = 0
     cost_result = 0.0
-
     # Asks user for input
     puts "How far are you going in miles?: "
     dist = gets.chomp
@@ -179,11 +172,9 @@ class CalcEngine
     cpg = gets.chomp
     puts "What is the average speed you will be going in miles per hour?: "
     mph = gets.chomp
-
     # Calls helper functions to calculate the input
     time_result = trip_time(dist.to_i, mph.to_i)
     cost_result = trip_cost(dist.to_i, eff.to_f, cpg.to_f, mph.to_i)
-
     # Output the result
     puts "It will take you approx. #{time_result.ceil} hours and will cost #{cost_result.round(2)}"
   end
@@ -236,11 +227,12 @@ class CalcEngine
   # Works out cost of a trip from distance, efficiency and cost per gallon
   def trip_cost(dist, eff, cpg, mph)
     mph_diff = 0.0
-
+    # If the speed is more than 60, efficiency goes down by 2
     if mph <= 60
       ((dist / eff) * cpg)
     elsif mph > 60
       mph_diff = mph - 60
+      # Reduce efficiency by 2
       for i in 0..mph_diff
         eff -= 2
         if eff <= 0
